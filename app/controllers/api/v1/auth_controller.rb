@@ -8,19 +8,13 @@ module Api
         end
         
         def show
-            render json: {
-                id: current_user.id,
-                username: current_user.username
-            }
+            render json: current_user, include: :wait_times
         end
 
         def create
             user = User.find_by(username: params[:username])
             if user.present? && user.authenticate(params[:password]) 
-                render json: {
-                    id: user.id,
-                    username: user.username
-                }
+                render json: user, include: :wait_times
             else
                 render json: {error: "Wrong username or password"}, status: 404
             end

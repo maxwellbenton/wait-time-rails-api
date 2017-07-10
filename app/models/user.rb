@@ -9,8 +9,8 @@ class User < ApplicationRecord
         render json: @users
     end
 
-    def all_wait_times
-        #@wait_times = WaitTime.where(user_id: current_user)
-    end
+    # def all_wait_times
+    #     @wait_times = WaitTime.where(user_id: self.id)
+    # end
     
 end

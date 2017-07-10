@@ -11,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
         if @user == nil then
             @user = User.create(username: params[:user][:username], password: params[:user][:password])
         end
-        byebug
+        
         render json: @user, include: :wait_times
     end
     

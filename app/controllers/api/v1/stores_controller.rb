@@ -27,6 +27,7 @@ class Api::V1::StoresController < ApplicationController
         distance = 0.003
         @stores = Store.where(latitude: ((params[:location][:latitude]-distance)..(params[:location][:latitude]+distance)), longitude: ((params[:location][:longitude]-distance)..(params[:location][:longitude]+distance)))
         stores = @stores.sort_by{|store| Math.sqrt((((store.latitude-params[:location][:latitude]).abs)*((store.latitude-params[:location][:latitude]).abs))+(((store.longitude-params[:location][:longitude]).abs)*((store.longitude-params[:location][:longitude]).abs)))}
+        byebug stores
         render json: stores.as_json(methods:[:total_wait_time, :average_wait_time, :estimated_wait_time])
     end
 

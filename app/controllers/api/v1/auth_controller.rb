@@ -10,6 +10,7 @@ module Api
         def show
             render json: current_user, include: :wait_times
         end
+        
 
         def create
             user = User.find_by(username: params[:username])
